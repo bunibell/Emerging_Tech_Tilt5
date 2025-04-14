@@ -1,51 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TiltFive;
+using static TiltFive.Input;
 
 public class PickupSystem : MonoBehaviour
 {
-    public Raycaster raycaster; // drag your raycaster object into this field in Inspector
+    public Transform wandTransform; // Drag your wand GameObject’s Transform here
+    public Player player;           // Drag your TiltFivePlayer GameObject here
+
     private GameObject heldObject = null;
-    public Transform holdPoint; // an empty GameObject placed where you want to "hold" items
 
     void Update()
     {
-        // Replace this with wand button later – using Mouse0 (left click) for now
-        if (Input.GetMouseButtonDown(0))
+        if (player != null && player.GetWandDevice().GetButtonDown(WandButton.One))
         {
             if (heldObject == null)
-            {
                 TryPickup();
-            }
             else
-            {
                 DropObject();
-            }
-        }
-
-        // Keep held object in front of wand
-        if (heldObject != null)
-        {
-            heldObject.transform.position = holdPoint.position;
-            heldObject.transform.rotation = holdPoint.rotation;
         }
     }
 
     void TryPickup()
     {
-        if (raycaster.target != null && raycaster.target.CompareTag("Selectable"))
+        if (Physics.Raycast(wandTransform.position, wandTransform.forward, out RaycastHit hit, 2f))
         {
-            heldObject = raycaster.target;
-            heldObject.GetComponent<Rigidbody>().isKinematic = true; // so it doesn’t fall
+            if (hit.collider.CompareTag("Selectable"))
+            {
+                heldObject = hit.collider.gameObject;
+                heldObject.transform.SetParent(wandTransform);
+                heldObject.transform.localPosition = new Vector3(0, 0, 0.1f); // Slight offset
+                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
         }
     }
 
     void DropObject()
     {
-        if (heldObject != null)
-        {
-            heldObject.GetComponent<Rigidbody>().isKinematic = false;
-            heldObject = null;
-        }
+        heldObject.transform.SetParent(null);
+        heldObject.GetComponent<Rigidbody>().isKinematic = false;
+        heldObject = null;
     }
 }
