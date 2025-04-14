@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: table
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c30b11d6723d8e7469486cb3ec218fa2, type: 3}
+      propertyPath: m_TagString
+      value: Selectable
+      objectReference: {fileID: 0}
     - target: {fileID: 923442180120632145, guid: c30b11d6723d8e7469486cb3ec218fa2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

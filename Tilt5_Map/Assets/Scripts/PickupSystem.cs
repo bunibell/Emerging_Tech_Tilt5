@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TiltFive;
-using static TiltFive.Input;
+using static TiltFive.Input; 
 
 public class PickupSystem : MonoBehaviour
 {
-    public Transform wandTransform; // Drag your wand GameObject’s Transform here
-    public Player player;           // Drag your TiltFivePlayer GameObject here
+    public Transform wandTransform; // Assign this in the Inspector
 
     private GameObject heldObject = null;
 
     void Update()
     {
-        if (player != null && player.GetWandDevice().GetButtonDown(WandButton.One))
+        // Check if the wand button is pressed using the static API
+        if (GetButtonDown(WandButton.One))
         {
             if (heldObject == null)
                 TryPickup();
@@ -30,16 +30,30 @@ public class PickupSystem : MonoBehaviour
             {
                 heldObject = hit.collider.gameObject;
                 heldObject.transform.SetParent(wandTransform);
-                heldObject.transform.localPosition = new Vector3(0, 0, 0.1f); // Slight offset
-                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+                heldObject.transform.localPosition = new Vector3(0, 0, 0.1f);
+                Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.isKinematic = true;
+                }
             }
         }
     }
 
     void DropObject()
     {
-        heldObject.transform.SetParent(null);
-        heldObject.GetComponent<Rigidbody>().isKinematic = false;
-        heldObject = null;
+        if (heldObject != null)
+        {
+            heldObject.transform.SetParent(null);
+            Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = false;
+            }
+            heldObject = null;
+        }
     }
 }
+
+
+
