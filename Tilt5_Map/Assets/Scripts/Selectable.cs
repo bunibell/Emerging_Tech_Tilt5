@@ -4,28 +4,42 @@ using UnityEngine;
 
 public class Selectable : MonoBehaviour
 {
-    private Material originalMaterial;
-    public Material highlightMaterial; // Assign this in Inspector
+    private Material[][] originalMaterialsPerRenderer;
+    private Renderer[] childRenderers;
 
-    private Renderer objRenderer;
+    public Material highlightMaterial;
 
     void Start()
     {
-        objRenderer = GetComponent<Renderer>();
-        if (objRenderer != null)
-            originalMaterial = objRenderer.material;
+        // Get all renderers in this object and its children
+        childRenderers = GetComponentsInChildren<Renderer>();
+        originalMaterialsPerRenderer = new Material[childRenderers.Length][];
+
+        for (int i = 0; i < childRenderers.Length; i++)
+        {
+            originalMaterialsPerRenderer[i] = childRenderers[i].materials;
+        }
     }
 
     public void Highlight()
     {
-        if (objRenderer != null && highlightMaterial != null)
-            objRenderer.material = highlightMaterial;
+        foreach (var renderer in childRenderers)
+        {
+            Material[] highlightMats = new Material[renderer.materials.Length];
+            for (int i = 0; i < highlightMats.Length; i++)
+                highlightMats[i] = highlightMaterial;
+
+            renderer.materials = highlightMats;
+        }
     }
 
     public void Unhighlight()
     {
-        if (objRenderer != null && originalMaterial != null)
-            objRenderer.material = originalMaterial;
+        for (int i = 0; i < childRenderers.Length; i++)
+        {
+            childRenderers[i].materials = originalMaterialsPerRenderer[i];
+        }
     }
 }
+
 

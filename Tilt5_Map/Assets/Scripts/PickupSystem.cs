@@ -14,10 +14,17 @@ public class PickupSystem : MonoBehaviour
     private GameObject lastHoveredObject = null;
     private Selectable lastSelectable = null;
 
+    public Transform rayPointer;
+
     void Start()
     {
-        lineRenderer = GetComponent<LineRenderer>();
+        if (lineRenderer == null)
+            lineRenderer = GetComponent<LineRenderer>();
+
+        lineRenderer.startWidth = 0.7f;
+        lineRenderer.endWidth = 0.7f;
     }
+
 
     void Update()
     {
@@ -34,9 +41,9 @@ public class PickupSystem : MonoBehaviour
         Vector3 rayDirection = wandTransform.forward;
 
         lineRenderer.SetPosition(0, rayOrigin);
-        lineRenderer.SetPosition(1, rayOrigin + rayDirection * 5f);
+        lineRenderer.SetPosition(1, rayOrigin + rayDirection * 10f);
 
-        if (Physics.Raycast(wandTransform.position, wandTransform.forward, out RaycastHit hit, 2f))
+        if (Physics.Raycast(wandTransform.position, wandTransform.forward, out RaycastHit hit, 5f))
         {
             GameObject hitObj = hit.collider.gameObject;
 
@@ -48,7 +55,7 @@ public class PickupSystem : MonoBehaviour
                         lastSelectable.Unhighlight();
 
                     lastHoveredObject = hitObj;
-                    lastSelectable = hitObj.GetComponent<Selectable>();
+                    lastSelectable = hitObj.GetComponentInParent<Selectable>();
 
                     if (lastSelectable != null)
                         lastSelectable.Highlight();

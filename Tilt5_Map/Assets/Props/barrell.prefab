@@ -53,6 +53,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 852124ce080a6d64999c25522fef3971, type: 2}
     - target: {fileID: 919132149155446097, guid: 9d8b2b4d940404440815ff21b49497af, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: 9d8b2b4d940404440815ff21b49497af, type: 3}
       propertyPath: m_Name
       value: barrell
       objectReference: {fileID: 0}
@@ -70,6 +74,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d8b2b4d940404440815ff21b49497af, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5684664148031557670}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d8b2b4d940404440815ff21b49497af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8854172152391467400}
   m_SourcePrefab: {fileID: 100100000, guid: 9d8b2b4d940404440815ff21b49497af, type: 3}
 --- !u!1 &2076042880813406456 stripped
 GameObject:
@@ -95,10 +102,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
-  m_Height: 0.5
+  m_Radius: 0.00888443
+  m_Height: 0.026399612
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.000091552734, y: 0.006808281, z: 0.00037002563}
 --- !u!114 &5684664148031557670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +119,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: fccb9605ca01a134b987cb76ec40b1db, type: 2}
+--- !u!23 &8854172152391467400
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076042880813406456}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 852124ce080a6d64999c25522fef3971, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

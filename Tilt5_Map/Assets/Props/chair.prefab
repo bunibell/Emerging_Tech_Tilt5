@@ -81,6 +81,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 852124ce080a6d64999c25522fef3971, type: 2}
     - target: {fileID: 919132149155446097, guid: dfcce054e0ccc574a922ed44812a8a37, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: dfcce054e0ccc574a922ed44812a8a37, type: 3}
       propertyPath: m_Name
       value: chair
       objectReference: {fileID: 0}
@@ -113,7 +117,7 @@ PrefabInstance:
       addedObject: {fileID: 797913897058583340}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dfcce054e0ccc574a922ed44812a8a37, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -6556427985638161872}
+      addedObject: {fileID: 3576151856676833165}
   m_SourcePrefab: {fileID: 100100000, guid: dfcce054e0ccc574a922ed44812a8a37, type: 3}
 --- !u!1 &2716295113203434117 stripped
 GameObject:
@@ -133,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: fccb9605ca01a134b987cb76ec40b1db, type: 2}
---- !u!65 &-6556427985638161872
+--- !u!65 &3576151856676833165
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,5 +156,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.014508551, y: 0.024667725, z: 0.015789943}
+  m_Center: {x: -0.0003038603, y: 0.00071573496, z: 0.0007656884}
