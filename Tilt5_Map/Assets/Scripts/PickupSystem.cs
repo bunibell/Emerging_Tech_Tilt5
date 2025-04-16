@@ -34,7 +34,7 @@ public class PickupSystem : MonoBehaviour
         Vector3 rayDirection = wandTransform.forward;
 
         lineRenderer.SetPosition(0, rayOrigin);
-        lineRenderer.SetPosition(1, rayOrigin + rayDirection * 2f); // 2 units long ray
+        lineRenderer.SetPosition(1, rayOrigin + rayDirection * 5f);
 
         if (Physics.Raycast(wandTransform.position, wandTransform.forward, out RaycastHit hit, 2f))
         {
@@ -75,6 +75,9 @@ public class PickupSystem : MonoBehaviour
                 lastHoveredObject = null;
             }
         }
+
+        Debug.DrawRay(wandTransform.position, wandTransform.forward * 2f, Color.red);
+
     }
 
     void TryPickup()
